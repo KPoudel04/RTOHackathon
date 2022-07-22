@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar-custom {
+  background-color: #F5C1CB;
+  font-size: 40px;
+}
