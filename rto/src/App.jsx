@@ -33,60 +33,15 @@ function App() {
         <Route path="/profile"element=
           {user ? <Profile /> : <Navigate to="/login" replace />} 
         />
-        <Route path="/map" element={<Map />} />
-        <Route path="/my-pets" element={<MyPets />} />
+        <Route path="/map" element=
+          {user ? <Map /> : <Navigate to="/login" replace />}
+        />
+        <Route path="/my-pets" element=
+          {user ? <MyPets /> : <Navigate to="/login" replace />} 
+        />
       </Routes>
     </UserContext.Provider>
   );
-
-  // if (user) {
-  //   // user is logged in
-  //   return (
-  //     <UserContext.Provider value={user}>
-  //       <Header />
-  //       <Routes>
-  //         <Route path="/" exact element={<Landing />} />
-  //         <Route path="/login" element={<Login />} />
-  //         <Route path="/signup" element={<Signup />} />
-  //         <Route path="/profile" element={<Profile />} />
-  //         <Route path="/map" element={<Map />} />
-  //       </Routes>
-  //     </UserContext.Provider>
-  //   );
-  // } else if (authLoading || userLoading) {
-  //   return (
-  //     // User is being logged in
-  //     // TODO: make better loading screen
-  //     <div className="">
-  //       <p>Loading...</p>
-  //     </div>
-  //   )
-  // } else if (authError || userError) {
-  //   // error logging in
-  //   // log appropriate error
-  //   if (authError) {
-  //     console.error(authError.message)
-  //     console.log({ authError })
-  //   } else if (userError) {
-  //     console.error(userError.message)
-  //     console.log({ userError })
-  //   }
-  //   const message = 'Sign in error. Please try again.'
-  //   return <Login message={message} />
-  // } else {
-  //   return (
-  //     <UserContext.Provider value={user}>
-  //       <Header />
-  //       <Routes>
-  //         <Route path="/" exact element={<Landing />} />
-  //         <Route path="/login" element={<Login />} />
-  //         <Route path="/signup" element={<Signup />} />
-  //         <Route path="/profile" element={<Login />} />
-  //         <Route path="/map" element={<Login />} />
-  //       </Routes>
-  //     </UserContext.Provider>
-  //   );
-  // }
 }
 
 export default App;

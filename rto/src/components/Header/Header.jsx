@@ -31,19 +31,19 @@ function Header() {
             PawFect Finder
           </NavLink>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" hidden={!user}>
           <NavLink className="nav-link" to="/map">
             <img src={map} className="icon" />
             Map
           </NavLink>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" hidden={!user}>
           <NavLink className="nav-link" to="/profile">
             <img src={profile} className="icon" />
             Profile
           </NavLink>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" hidden={!user}>
           <NavLink className="nav-link" to="/my-pets">
             <img src={mypets} className="icon" />
             My Pets
