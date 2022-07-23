@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { connectStorageEmulator, getStorage } from "firebase/storage";
 import { User } from './User';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -49,7 +49,7 @@ export async function registerUser(name, email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        const userId = userCredential.user.id;
+        const userId = userCredential.user.uid;
         const user = new User(userId, name, email);
         return user.persist();
       })
