@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import UserContext from '../UserContext';
 import "./Header.css";
 import logo from "./images/logo.jpg";
 import map from "./images/map.jpg";
@@ -7,8 +8,20 @@ import find from "./images/find.jpg";
 import alert from "./images/alert.jpg";
 import profile from "./images/profile.jpg";
 import mypets from "./images/mypets.jpg";
+import { signOutUser } from "../../backend/Firebase"
 
 function Header() {
+  const user = useContext(UserContext)
+
+  const accountButton = user ? 
+    <button onClick={signOutUser} className="nav-link">
+      Sign out
+    </button>
+    : 
+    <NavLink className="nav-link" to="/login">
+      Login/Signup
+    </NavLink>
+
   return (
     <nav className="navbar-custom fixed-top">
       <ul className="nav nav-pills nav-fill">
@@ -49,9 +62,7 @@ function Header() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/login">
-            Login/Signup
-          </NavLink>
+          {accountButton}
         </li>
       </ul>
     </nav>
