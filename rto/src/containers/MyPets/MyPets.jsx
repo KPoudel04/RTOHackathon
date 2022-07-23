@@ -1,7 +1,7 @@
 import React from "react";
 import "./MyPets.css";
 import { Image } from "react-bootstrap";
-import logo from "../MyPets/logo192.png";
+import logo from "../MyPets/pets.png";
 import Wrapper from "../../components/Wrapper/Wrapper";
 
 export default function MyPets() {
