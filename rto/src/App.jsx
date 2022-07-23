@@ -1,31 +1,27 @@
-import React from 'react';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
-
-import "./App.css"
-import Header from './components/Header/Header';
-import Landing from './containers/Landing/Landing';
-import Login from './containers/Login/Login';
-import Signup from './containers/Signup/Signup';
-import Profile from './containers/Profile/Profile.jsx';
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Landing from "./containers/Landing/Landing";
+import Login from "./containers/Auth/Login/Login";
+import Signup from "./containers/Auth/Signup/Signup";
+import Wrapper from "./components/Wrapper/Wrapper";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <Routes>
-          <Route path="/" element={<Landing/>}/>            
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+    <>
+      <Header />
+      <Wrapper>
+        <Routes>
+          <Route path="/" exact element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
-    </div>
-  )
+      </Wrapper>
+    </>
+  );
 }
-
-
 
 export default App;
