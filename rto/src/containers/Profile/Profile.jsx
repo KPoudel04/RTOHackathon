@@ -6,8 +6,6 @@ import logo from "../Profile/logo192.png"
 export default function Profile() {
   return (
     <div class="body">
-       
-        
         <div class="form-container ">
         <div class="">
             <p>Owner Profile</p>
