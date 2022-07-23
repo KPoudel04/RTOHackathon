@@ -1,4 +1,7 @@
 .navbar-custom {
   background-color: #F5C1CB;
-  font-size: 40px;
+  font-size: 15px;
+  height: 70px;
+  padding: 15px;
+  justify-content: center;
 }
