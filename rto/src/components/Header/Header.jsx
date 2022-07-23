@@ -1,16 +1,19 @@
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import './Header.css';
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import "./Header.css";
 function Header() {
   return (
     <Navbar className="navbar-custom">
-        <Container>
-            <Navbar.Text>
-                Pawfect Finder
-            </Navbar.Text>
-        </Container>
+      <Container>
+        <Navbar.Text
+          style={{
+            color: "#fff",
+          }}
+        >
+          Pawfect Finder
+        </Navbar.Text>
+      </Container>
     </Navbar>
-
   );
 }
 
