@@ -1,0 +1,27 @@
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.column {
+    display: inline-block;
+    padding: 1em;
+    text-align: center;
+}
+
+.row {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5%;
+}
+
+.landing-text {
+    display: inline-block;
+    grid-auto-flow: column;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+}
