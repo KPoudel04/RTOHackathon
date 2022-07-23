@@ -3,14 +3,18 @@
   font-size: 12px;
   height: 100px;
   padding: 10px;
-  justify-content: center;
+  justify-content: flex-end;
   align-content: center;
   position: relative;
+  width: 100% !important;
+  float: right !important;
 }
 
 .nav-link {
   color: #fff !important;
   margin-top: 1rem;
+  font-size: 20px !important;
+  float: left;
 }
 
 /*
@@ -25,7 +29,7 @@ https://reactrouter.com/docs/en/v6/components/nav-link
 }
 
 .icon {
-  width: 20px;
+  width: 40px;
   right: 1rem;
   display: inline-block;
   mix-blend-mode: multiply;
