@@ -11,7 +11,9 @@ export default UserContext
 // get the user from the context
   const user = useContext(UserContext)
   if (user === null) {
-    throw new Error('No user logged in')
+    // put any logic here for when the user is not signed in
+  } else {
+    // user is signed in and can be accessed with "user" variable
   }
 
 */
