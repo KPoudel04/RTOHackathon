@@ -1,7 +1,7 @@
 .custom-button {
   font-size: 1em;
   color: #fff;
-  background: #2f3247;
+  background: #439485;
   margin-left: auto;
   margin-right: auto;
   font-weight: 600;
@@ -15,5 +15,5 @@
 }
 
 .custom-button:hover {
-  background: #22223b;
+  background: #287e6f;
 }

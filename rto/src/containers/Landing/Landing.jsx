@@ -1,28 +1,21 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Landing.css";
-import landingPic from "./landing.png";
+import landingPic from "./landing.jpg";
 
 const Landing = () => {
   return (
-    <div>
-      <div className="centered">
-        <div className="row">
-          <div className="column">
-            <img src={landingPic} class="img-fluid" alt="Responsive image">
-            </img>
-          </div>
+    <div className="wrapper">
+      <img src={landingPic} class="img-fluid" alt="Responsive image"></img>
 
-          <div className="column">
-            <div>
-              <h1 > Pawfect Finder</h1>
-              <h2>Find your perfect pet</h2>
-            </div>
-          </div>
-        </div>
+      <div className="texts">
+        <div className="title"> Pawfect Finder</div>
+        <Link to="/login" className="link">
+          Find your lost pet{" "}
+        </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Landing;

@@ -1,22 +1,38 @@
 .navbar-custom {
-  background-color: #3d436d;
+  background-color: #287e6f;
   font-size: 15px;
-  height: 70px;
-  padding: 15px;
+  height: 100px;
+  padding: 10px;
   justify-content: center;
+  align-content: center;
+  position: relative;
 }
 
 .nav-link {
   color: #fff !important;
-  text-decoration: none;
+  margin-top: 1rem;
 }
 
 /*
 https://reactrouter.com/docs/en/v6/components/nav-link
 */
 
+.nav-link:hover,
 .active {
-  color: rgb(36, 164, 145) !important;
-  font-weight: bold;
+  font-weight: bold !important;
   background-color: inherit !important;
+  font-size: 25px !important;
 }
+
+.icon {
+  width: 30px;
+  right: 2rem;
+  display: inline-block;
+  mix-blend-mode: multiply;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* Frame 5 */
