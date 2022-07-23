@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, where, getDocs, query, limit } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { User } from './User';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -94,4 +94,36 @@ function validUserRegistration(name, email, password) {
   }
 }
 
-// export function persistDoc
+export async function signInUser(email, password) {
+  return signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in with auth
+      const userId = userCredential.user.uid;
+      return getDoc(doc(db, "users", userId));  // get snapshot of user data from firestore
+    })
+    .then((docSnap) => {
+      if (docSnap.exists()) {
+        return {
+          val: docSnap.data
+        }
+      } else {
+        // reaching here means the user can sign in but they don't have any data stored in firestore,
+        // which should be impossible
+        return {
+          val: null,
+          status: `No user is stored with account id: ${docSnap.id}`
+        }
+      }
+    })
+    .catch((error) => {
+      // Error from firebase auth
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // possible error code ref: https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithemailandpassword
+      // TODO: ideally, make the error message more user friendly based on error code
+      return {
+        val: null,
+        status: errorMessage
+      }
+    });
+}

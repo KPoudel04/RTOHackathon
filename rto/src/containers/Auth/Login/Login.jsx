@@ -5,6 +5,8 @@ import Input from "../../../components/Input/Input";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import "./Login.css";
 
+import { signInUser } from '../../../backend/Firebase';
+
 const Login = ({ error, loading, login, clearErrors, history }) => {
   const [formData, setformData] = useState({
     email: "",
@@ -21,6 +23,18 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    console.log("submit pressed");
+    const result = await signInUser(email, password);
+    console.log({ result });
+    if (!result) {
+      console.log("Failed to sign in, unknown error");
+    } else if (!result.val) {
+      console.log(`Sign in error: ${result.status}`)
+    } else {
+      // user successfully signed in
+      console.log("successfully signed in");
+    }
+    // TODO: display status message to UI
   };
 
   return (
