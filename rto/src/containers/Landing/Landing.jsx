@@ -5,27 +5,24 @@ import landingPic from "./landing.png";
 
 const Landing = () => {
   return (
-    <Container>
+    <div>
       <div className="centered">
         <div className="row">
           <div className="column">
-            <img
-              src={landingPic}
-              class="img-fluid"
-              alt="Responsive image"
-            ></img>
+            <img src={landingPic} class="img-fluid" alt="Responsive image">
+            </img>
           </div>
 
           <div className="column">
-            <div className="landing-text">
-              <h1> Pawfect Finder</h1>
+            <div>
+              <h1 > Pawfect Finder</h1>
               <h2>Find your perfect pet</h2>
             </div>
           </div>
         </div>
       </div>
-    </Container>
-  );
-};
+    </div>
+  )
+}
 
 export default Landing;

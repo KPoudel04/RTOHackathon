@@ -22,6 +22,5 @@
     display: inline-block;
     grid-auto-flow: column;
     gap: 4px;
-    align-items: center;
-    justify-items: center;
+    text-align: center;
 }
