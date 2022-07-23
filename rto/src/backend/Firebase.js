@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { User } from './User';
@@ -126,4 +126,22 @@ export async function signInUser(email, password) {
         status: errorMessage
       }
     });
+}
+
+/** Return Promise<Result<boolean>> indicate success of sign out */
+export async function signOutUser() {
+  try {
+    signOut(auth);
+    // Sign-out successful.
+    return {
+      val: true
+    }
+  } catch (signOutError) {
+    // An error happened.
+    console.log({ signOutError })
+    return {
+      val: false,
+      status: "User could not be signed out"
+    }
+  }
 }
