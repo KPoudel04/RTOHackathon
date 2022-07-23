@@ -9,6 +9,7 @@ import Header from './components/Header/Header';
 import Landing from './containers/Landing/Landing';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
+import Profile from './containers/Profile/Profile.jsx';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Landing/>}/>            
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
     </div>
   )
