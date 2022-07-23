@@ -7,6 +7,7 @@ import Login from "./containers/Auth/Login/Login";
 import Signup from "./containers/Auth/Signup/Signup";
 import Map from "./containers/Map/Map";
 import Profile from "./containers/Profile/Profile";
+import MyPets from "./containers/MyPets/MyPets";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/my-pets" element={<MyPets />} />
       </Routes>
     </>
   );
