@@ -22,7 +22,7 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const firestore = getFirestore(app);
+export const db = getFirestore(app);
 
 export const storage = getStorage(app);
 
@@ -51,12 +51,12 @@ export async function registerUser(name, email, password) {
         // Signed in 
         // const user = userCredential.user;
         const user = new User(name, email);
-        return user.persist();
+        return user.persist(userCredential.user.uid);
       })
       .then((persistResult) => {
         return {
           val: persistResult.val,
-          status: persistResult.status
+          status: persistResult?.status
         }
       })
       .catch((error) => {
@@ -64,6 +64,7 @@ export async function registerUser(name, email, password) {
         const errorCode = error.code;
         const errorMessage = error.message;
         // possible error code ref: https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#createuserwithemailandpassword
+        // TODO: ideally, make the error message more user friendly based on error code
         return {
           val: null,
           status: errorMessage
@@ -92,3 +93,5 @@ function validUserRegistration(name, email, password) {
     }
   }
 }
+
+// export function persistDoc
