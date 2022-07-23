@@ -1,27 +1,101 @@
-.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
+.wrapper {
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.column {
-    display: inline-block;
-    padding: 1em;
-    text-align: center;
+.texts {
+  margin-top: 15rem;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  font-size: 24px;
+  border: 10px solid black;
+  padding: 2rem 1rem;
+  min-height: 3em;
+  resize: both;
+  border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
 }
 
-.row {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 5%;
+.title {
+  text-decoration-color: black;
+  flex-direction: column;
+  font-size: 90px;
+  font-weight: bold;
+  animation-name: title;
 }
 
-.landing-text {
-    display: inline-block;
-    grid-auto-flow: column;
-    gap: 4px;
-    align-items: center;
-    justify-items: center;
+.subtitle {
+  text-decoration-color: black;
+  flex-direction: column;
+  font-size: 60px;
+  animation-name: title;
+}
+
+.link:hover {
+  transform: scale(1.2);
+  color: White;
+}
+
+.border {}
+
+.link {
+  margin-top: 1rem;
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.img-fluid {
+  /* dogCat */
+
+  margin-top: 5rem;
+  box-sizing: border-box;
+  background-blend-mode: overlay;
+  mix-blend-mode: difference;
+  border: 1px solid #000000;
+  filter: drop-shadow(0px 4px 4px rgba(50, 57, 190, 0.25));
+  border-radius: 50px;
+}
+
+.img-fluid:hover {
+  transform: scale(1.2);
+}
+
+@keyframes title {
+  0% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
+
+  25% {
+    background-color: yellow;
+    left: 200px;
+    top: 0px;
+  }
+
+  50% {
+    background-color: blue;
+    left: 200px;
+    top: 200px;
+  }
+
+  75% {
+    background-color: green;
+    left: 0px;
+    top: 200px;
+  }
+
+  100% {
+    background-color: red;
+    left: 0px;
+    top: 0px;
+  }
 }

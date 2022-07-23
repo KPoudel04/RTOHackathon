@@ -1,0 +1,35 @@
+.auth-container {
+  margin: auto;
+  width: 28rem;
+}
+
+.auth-content-container {
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.main-auth-container {
+  padding: 1rem 0;
+  max-width: 18rem;
+  margin: 0 auto;
+}
+
+.main-auth-footer {
+  padding: 1rem;
+  text-align: center;
+}
+
+.auth-footer-content {
+  color: rgb(62, 54, 54);
+}
+
+.auth-footer-content a {
+  text-decoration: none;
+  color: #3e499a;
+  text-decoration: underline;
+}
+
+.auth-footer-content a:hover {
+  color: #8991cf;
+}

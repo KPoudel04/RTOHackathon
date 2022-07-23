@@ -1,19 +1,16 @@
-import { React, useContext } from "react";
-import "./Profile.css";
+import React from "react";
+import "./MyPets.css";
 import { Image } from "react-bootstrap";
-import logo from "../Profile/logo192.png";
+import logo from "../MyPets/pets.png";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import UserContext from '../../components/UserContext';
 
-export default function Profile() {
-  const user = useContext(UserContext)
-
+export default function MyPets() {
   return (
     <Wrapper>
       <div class="body">
         <div class="form-container ">
           <div class="">
-            <p>Owner Profile</p>
+            <p>Pets info</p>
             <Image
               alt="profile card"
               src={logo}
@@ -26,108 +23,117 @@ export default function Profile() {
             {/* <div class="success-message">Success! Thank you for registering</div> */}
             <div class="g-5 row">
               <div class="col form-group">
-                <label>FirstName</label>
+                <label>OwnerName</label>
                 <input
-                  id="full-name"
+                  id="ownername"
                   class="border-dark form-control"
                   type="text"
-                  placeholder={user.name}
-                  name="firstName"
+                  placeholder="ownername"
+                  name="Name"
+                />
+              </div>
+            </div>
+            <div class="g-5 row">
+              <div class="col form-group">
+                <label>PetName</label>
+                <input
+                  id="petname"
+                  class="border-dark form-control"
+                  type="text"
+                  placeholder="petname"
+                  name="Name"
                 />
               </div>
 
               {/* Uncomment the next line to show the error message */}
-              {/* <span id="first-name-error">Please enter a first name</span> */}
+              {/* <span id="pets-name-error">Please enter a name</span> */}
 
               <div class=" col form-group">
-                <label>LastName</label>
+                <label>Species</label>
                 <input
-                  id="phone"
+                  id="species"
                   class="border-dark form-control"
                   type="text"
-                  placeholder="Last name"
-                  name="lastName"
+                  placeholder="dog/cat/other"
+                  name="Species"
                 />
               </div>
             </div>
 
             <div class=" g-5 row">
               <div class="col form-group">
-                <label>Phone</label>
+                <label>Weight</label>
                 <input
-                  id="phone"
+                  id="weight"
                   class="border-dark form-control"
-                  type="tel"
-                  placeholder="Phone"
-                  name="phone"
+                  type="number"
+                  placeholder="in lbs"
+                  name="Weight"
                 />
               </div>
 
               <div class=" col form-group">
-                <label>E-mail</label>
+                <label>Height</label>
                 <input
-                  id="phone"
+                  id="height"
                   class="border-dark form-control"
-                  type="email"
-                  placeholder="E-mail"
-                  name="email"
+                  type="number"
+                  placeholder="in inches"
+                  name="Height"
                 />
               </div>
             </div>
 
             <div class="g-5 row">
               <div class=" col form-group">
-                <label>Street Address</label>
+                <label>Sex</label>
                 <input
-                  id="address"
+                  id="sex"
                   class="border-dark form-control"
                   type="text"
-                  placeholder="address"
-                  name="address"
+                  placeholder="sex"
+                  name="Sex"
                 />
               </div>
 
               <div class="col form-group">
-                <label>City</label>
+                <label>Color</label>
                 <input
-                  id="city"
+                  id="color"
                   class="border-dark form-control"
                   type="text"
-                  placeholder="city"
-                  name="city"
+                  placeholder="color"
+                  name="Color"
                 />
               </div>
             </div>
 
             <div class="g-5 row">
               <div class=" col form-group">
-                <label>State</label>
+                <label>Allergies</label>
                 <input
-                  id="state"
+                  id="allergies"
                   class="border-dark form-control"
                   type="text"
-                  placeholder="state"
-                  name="state"
-                />
-              </div>
-
-              <div class="col form-group">
-                <label>Country</label>
-                <input
-                  id="country"
-                  class="border-dark form-control"
-                  type="text"
-                  placeholder="country"
-                  name="country"
+                  placeholder="allergies"
+                  name="Allergies"
                 />
               </div>
             </div>
+            <div class="g-5 row">
+              <div class="col form-group">
+                <label>Description</label>
+                <input
+                  id="description"
+                  class="border-dark form-control"
+                  type="text"
+                  placeholder="description"
+                  name="Description"
+                />
+              </div>
+            </div>
+          
 
-            {/* Uncomment the next line to show the error message */}
-            {/* <span id="last-name-error">Please enter a last name</span> */}
-
-            {/* Uncomment the next line to show the error message */}
-            {/* <span id="email-error">Please enter an email address</span> */}
             <button class="btn btn-success form-field" type="submit">
               Submit
             </button>
