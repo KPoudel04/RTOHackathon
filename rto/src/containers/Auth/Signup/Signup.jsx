@@ -3,6 +3,7 @@ import Card from "../../../components/Card/Card";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 import Wrapper from "../../../components/Wrapper/Wrapper";
+import { registerUser } from '../../../backend/Firebase';
 
 const Signup = ({ error, loading, signup, clearErrors, history }) => {
   const [formData, setformData] = useState({
@@ -22,6 +23,22 @@ const Signup = ({ error, loading, signup, clearErrors, history }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    console.log("submit pressed");
+    if (password === confirm_password) {
+      const result = await registerUser(name, email, password);
+      console.log({ result });
+      if (!result) {
+        console.log("Failed to sign up, unknown error");
+      } else if (!result.val) {
+        console.log(`Sign up error: ${result.status}`)
+      } else {
+        // user successfully registered and persisted
+        console.log("successfully signed up");
+      }
+    } else {
+      console.log("Passwords don't match");
+    }
+    // TODO: display status message to UI
   };
 
   return (
