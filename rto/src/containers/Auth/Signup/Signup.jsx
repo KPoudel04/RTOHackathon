@@ -4,7 +4,7 @@ import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import { registerUser } from '../../../backend/Firebase';
-
+import { useNavigate } from "react-router-dom";
 const Signup = ({ error, loading, signup, clearErrors, history }) => {
   const [formData, setformData] = useState({
     name: "",
@@ -20,7 +20,7 @@ const Signup = ({ error, loading, signup, clearErrors, history }) => {
       [e.target.name]: e.target.value,
     });
   };
-
+  let navigate = useNavigate();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log("submit pressed");
@@ -33,6 +33,7 @@ const Signup = ({ error, loading, signup, clearErrors, history }) => {
         console.log(`Sign up error: ${result.status}`)
       } else {
         // user successfully registered and persisted
+        navigate("/profile");
         console.log("successfully signed up");
       }
     } else {
