@@ -32,7 +32,7 @@ export const storage = getStorage(app);
     status: string?
   }
   val holds the actual result, status is undefined unless there is a status message returned,
-  usually an error message
+  usually an error message. In case of error, val is usually null or false.
 */
 
 /**
