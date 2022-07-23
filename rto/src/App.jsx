@@ -6,7 +6,7 @@ import Landing from "./containers/Landing/Landing";
 import Login from "./containers/Auth/Login/Login";
 import Signup from "./containers/Auth/Signup/Signup";
 import Wrapper from "./components/Wrapper/Wrapper";
-import Profile from "./components/Profile/Profile";
+import Profile from "./containers/Profile/Profile";
 
 function App() {
   return (

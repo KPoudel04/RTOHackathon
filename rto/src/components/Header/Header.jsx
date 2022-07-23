@@ -1,49 +1,48 @@
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
+
 function Header() {
   return (
-    <nav class="navbar-custom">
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="nav-link active" href="/">
+    <nav className="navbar-custom">
+      <ul className="nav nav-pills nav-fill">
+        <li className="nav-item">
+          <NavLink to="/" className="nav-link">
             PawFect Finder
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#!">
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/map">
             Map
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">
-            <img src="user.png" /> Profile
-          </a>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/profile">
+            Profile
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#!">
-            MyPets
-          </a>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/my-pets">
+            My Pets
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#!">
-            FindPet
-          </a>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/find-pet">
+            Find Pet
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#!">
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/alerts">
             Alerts
-          </a>
+          </NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#!">
-            LOGOUT
-          </a>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/login">
+            Login/Signup
+          </NavLink>
         </li>
       </ul>
     </nav>
   );
 }
-//Users/DIVINE/Desktop/Hackerton/RTOHackathon/rto/src/components/Header/user.png
-
 export default Header;
