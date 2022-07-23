@@ -6,7 +6,7 @@ function Header() {
     <Navbar className="navbar-custom">
         <Container>
             <Navbar.Text>
-                Pawfect Finder
+                Pawfect  Finder
             </Navbar.Text>
         </Container>
     </Navbar>
