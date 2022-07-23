@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import '../index.css';
+import './Header.css';
 function Header() {
   return (
     <Navbar className="navbar-custom">
