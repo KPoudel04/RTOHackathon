@@ -10,6 +10,7 @@ import Landing from './containers/Landing/Landing';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import Profile from './containers/Profile/Profile.jsx';
+import Map from './containers/Map/Map.jsx';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/map" element={<Map/>}/>
         </Routes>
     </div>
   )

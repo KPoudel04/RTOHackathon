@@ -9,7 +9,7 @@ function Header() {
           <a class="nav-link active" href="/">PawFect Finder</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#!">Map</a>
+          <a class="nav-link" href="/Map">Map</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile"><img src="user.png"/> Profile</a>
