@@ -49,9 +49,9 @@ export async function registerUser(name, email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        // const user = userCredential.user;
-        const user = new User(name, email);
-        return user.persist(userCredential.user.uid);
+        const userId = userCredential.user.id;
+        const user = new User(userId, name, email);
+        return user.persist();
       })
       .then((persistResult) => {
         return {

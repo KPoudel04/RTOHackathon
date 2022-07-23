@@ -1,7 +1,25 @@
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from './Firebase';
+
+
 export class Pet {
-  constructor(name, sex, species, breed, weight, height, color, allergies, other, location) {
+  /**
+   * Constructs a pet
+   * @param {User} owner - pet's owner
+   * @param {string} name -pet's name
+   * @param {string} sex -pet's sex (male or female)
+   * @param {string} species - pet's species
+   * @param {number} weight - pet's weight in pounds (lb)
+   * @param {number} height - pet's height in inches
+   * @param {string} color - describes the color of the pet
+   * @param {string} breed - optional, pet's breed
+   * @param {string[]} allergies - optional, list of pet's allergies
+   * @param {string} other - optional, any other attributes of the pet
+   * @param {{latitude: number, longitude: number}} location - optional, pet's most recent location in
+   * latitude longitude coordinates
+   */
+  constructor(owner, name, sex, species, weight, height, color, breed, allergies, other, location) {
+    this.owner = owner
     this.name = name;
     this.sex = sex;
     this.species = species;
@@ -26,7 +44,11 @@ export class Pet {
    */
   async persist() {
     try {
-      const docRef = await addDoc(collection(db, "pets"), {...this});
+      const petToPersist = {...this};
+      petToPersist.ownerId = petToPersist.owner.uid
+      delete petToPersist.owner;
+
+      const docRef = await addDoc(collection(db, "pets"), petToPersist);
       console.log("Document written with ID: ", docRef.id);
       return {
         val: this
