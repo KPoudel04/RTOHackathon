@@ -17,7 +17,7 @@ export class User {
     this.email = email;
     if (homeAddress) {
       this.homeAddress = homeAddress;
-      this.homeCoordinates = User.convertAddressToCoordinates(homeAddress)
+      this.homeCoordinates = homeAddress.asGeopoint()
     }
     if (phone1)
       this.phone1 = phone1;
@@ -58,7 +58,7 @@ export class User {
     return query(collection(db, "pets"), where("ownerId", "==", this.uid))
   }
 
-  static convertAddressToCoordinates(homeAddress) {
-    
+  updateUser(name, address, phone1, phone2) {
+    // TODO
   }
 }

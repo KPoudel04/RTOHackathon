@@ -15,7 +15,7 @@ export class Pet {
    * @param {string} breed - optional, pet's breed
    * @param {string[]} allergies - optional, list of pet's allergies
    * @param {string} other - optional, any other attributes of the pet
-   * @param {{latitude: number, longitude: number}} location - optional, pet's most recent location in
+   * @param {Geopoint} location - optional, pet's most recent location in
    * latitude longitude coordinates
    */
   constructor(owner, name, sex, species, weight, height, color, breed, allergies, other, location) {
