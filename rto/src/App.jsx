@@ -12,6 +12,7 @@ import Signup from "./containers/Auth/Signup/Signup";
 import Map from "./containers/Map/Map";
 import Profile from "./containers/Profile/Profile";
 import UserContext from './components/UserContext';
+import MyPets from "./containers/MyPets/MyPets";
 
 function App() {
   // the currently authenticated user, if there is one
@@ -33,6 +34,7 @@ function App() {
           {user ? <Profile /> : <Navigate to="/login" replace />} 
         />
         <Route path="/map" element={<Map />} />
+        <Route path="/my-pets" element={<MyPets />} />
       </Routes>
     </UserContext.Provider>
   );
