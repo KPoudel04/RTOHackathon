@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../../../components/Card/Card";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
+import Wrapper from "../../../components/Wrapper/Wrapper";
 
 const Login = ({ error, loading, login, clearErrors, history }) => {
   const [formData, setformData] = useState({
@@ -22,26 +23,28 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
   };
 
   return (
-    <Card type="signin">
-      <form onSubmit={(e) => handleFormSubmit(e)}>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email address"
-          value={email}
-          onChange={(e) => handleFormChange(e)}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={(e) => handleFormChange(e)}
-          value={password}
-        />
+    <Wrapper>
+      <Card type="signin">
+        <form onSubmit={(e) => handleFormSubmit(e)}>
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) => handleFormChange(e)}
+          />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={(e) => handleFormChange(e)}
+            value={password}
+          />
 
-        <Button type="submit">Log In</Button>
-      </form>
-    </Card>
+          <Button type="submit">Log In</Button>
+        </form>
+      </Card>
+    </Wrapper>
   );
 };
 
