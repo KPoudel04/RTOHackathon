@@ -1,10 +1,13 @@
-import React from "react";
+import { React, useContext } from "react";
 import "./Profile.css";
 import { Image } from "react-bootstrap";
 import logo from "../Profile/logo192.png";
 import Wrapper from "../../components/Wrapper/Wrapper";
+import UserContext from '../../components/UserContext';
 
 export default function Profile() {
+  const user = useContext(UserContext)
+
   return (
     <Wrapper>
       <div class="body">
@@ -28,7 +31,7 @@ export default function Profile() {
                   id="full-name"
                   class="border-dark form-control"
                   type="text"
-                  placeholder="First name"
+                  placeholder={user.name}
                   name="firstName"
                 />
               </div>
