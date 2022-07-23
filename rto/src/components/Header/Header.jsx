@@ -10,7 +10,7 @@ import mypets from "./images/mypets.jpg";
 
 function Header() {
   return (
-    <nav className="navbar-custom">
+    <nav className="navbar-custom fixed-top">
       <ul className="nav nav-pills nav-fill">
         <li className="nav-item">
           <NavLink to="/" className="nav-link">

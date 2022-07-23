@@ -6,6 +6,10 @@
   padding: 20px;
 }
 
+.body{
+  margin-top: 100px;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;

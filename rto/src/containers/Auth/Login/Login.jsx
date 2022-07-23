@@ -3,6 +3,7 @@ import Card from "../../../components/Card/Card";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 import Wrapper from "../../../components/Wrapper/Wrapper";
+import "./Login.css";
 
 const Login = ({ error, loading, login, clearErrors, history }) => {
   const [formData, setformData] = useState({
@@ -23,8 +24,8 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
   };
 
   return (
-    <Wrapper>
-      <Card type="signin">
+    <Wrapper class="login-body card">
+      <Card class="login-body card" type="signin">
         <form onSubmit={(e) => handleFormSubmit(e)}>
           <Input
             type="email"
