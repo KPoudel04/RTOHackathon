@@ -51,12 +51,12 @@ export async function registerUser(name, email, password) {
         // Signed in 
         const userId = userCredential.user.uid;
         const user = new User(userId, name, email);
-        return user.addCoordinates();
-        // return user.persist();
+        // return user.addCoordinates();
+        return user.persist();
       })
-      .then((coordsResult) => {
-        return coordsResult.val.persist();
-      })
+      // .then((coordsResult) => {
+      //   return coordsResult.val.persist();
+      // })
       .then((persistResult) => {
         return {
           val: persistResult.val,
