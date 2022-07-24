@@ -1,7 +1,7 @@
 import React from "react";
 import "./PetsForm.css";
 import { Image } from "react-bootstrap";
-import logo from "../MyPets/pets.png";
+import logo from "./pets.png";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 
 function PetsForm({ newPet, setNewPet, handleSubmit }) {

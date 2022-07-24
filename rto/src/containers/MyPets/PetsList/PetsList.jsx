@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Card } from "react-bootstrap";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import MyPets from "../AddPet/PetsForm";
-import "/PetsList.css";
+import "./PetsList.css";
 import Pet from "../Pet/Pet";
 
 function PetsList(props) {
