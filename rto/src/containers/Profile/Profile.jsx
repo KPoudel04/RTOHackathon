@@ -8,7 +8,7 @@ import Card from '../../components/Card/Card';
 
 export default function Profile() {
   const user = useContext(UserContext)
-  console.log({ user })
+  // console.log({ user })
   const [formData, setformData] = useState(user);
   const [submitSuccess, setSubmitSuccess] = useState(null)
 
@@ -21,7 +21,7 @@ export default function Profile() {
         ...formData,
         [e.target.name]: e.target.value,
       });
-      console.log({ formData })
+      // console.log({ formData })
     };
 
     const handleAddressChange = (e) => {
@@ -32,7 +32,7 @@ export default function Profile() {
           [e.target.name]: e.target.value,
         }
       });
-      console.log({ formData })
+      // console.log({ formData })
     };
   
   
