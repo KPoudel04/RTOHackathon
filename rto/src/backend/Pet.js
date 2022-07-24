@@ -71,7 +71,7 @@ export class Pet {
 }
 
 // Firestore data converter for Pets
-export const petConverter = {
+const petConverter = {
   toFirestore(pet) {
     return pet;
   },
@@ -84,3 +84,4 @@ export const petConverter = {
       data.other, data.location, data.status, data.lastModified)
   },
 }
+export {petConverter};

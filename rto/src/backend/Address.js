@@ -8,7 +8,7 @@ export class Address {
       this.postalCode = postalCode;
   }
 
-  asGeopoint() {
+  async asGeopoint() {
     // use API to convert
   }
 }
