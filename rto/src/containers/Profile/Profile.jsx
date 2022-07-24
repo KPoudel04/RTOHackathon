@@ -10,9 +10,10 @@ export default function Profile() {
   const user = useContext(UserContext)
   console.log({ user })
   const [formData, setformData] = useState(user);
+  const [submitSuccess, setSubmitSuccess] = useState(null)
 
   if (user) {
-    const { name, homeAddress = {}, phone1 = "", phone2 = "" } = formData;
+    const {name, homeAddress = {}, phone1 = "", phone2 = ""} = formData;
     const {streetAddress = "", locality = "", state = "", country = ""} = homeAddress;
   
     const handleFormChange = (e) => {
@@ -43,16 +44,26 @@ export default function Profile() {
       console.log({ result });
       if (!result) {
         console.log("Failed to save user data, unknown error");
+        setSubmitSuccess(false)
       } else if (!result.val) {
         console.log(`Error updating user data: ${result.status}`)
+        setSubmitSuccess(false)
       } else {
         // user successfully registered and persisted
         console.log("successfully updated user data");
+        setSubmitSuccess(true)
       }
       // TODO: display status message to UI
     };
 
-
+    let submitMessage;
+    if (submitSuccess) {
+      submitMessage = <div class="success-message">Success! Information saved</div>
+    } else if (submitSuccess === false) {
+      submitMessage = <div class="error">There was a problem saving user information</div>
+    } else {
+      submitMessage = <></>
+    }
   
     return (
       <Wrapper>
@@ -135,7 +146,7 @@ export default function Profile() {
                     class="border-dark form-control"
                     type="text"
                     placeholder={streetAddress ?? "Ex: 123 Washington Way"}
-                    name="address"
+                    name="streetAddress"
                     text={streetAddress}
                     onChange={handleAddressChange}
                     required
@@ -149,7 +160,7 @@ export default function Profile() {
                     class="border-dark form-control"
                     type="text"
                     placeholder={locality ?? "Ex: Boston"}
-                    name="city"
+                    name="locality"
                     text={locality}
                     onChange={handleAddressChange}
                     required
@@ -196,6 +207,7 @@ export default function Profile() {
                 Submit
               </button>
             </form>
+            {submitMessage}
           </div>
         </div>
       </Wrapper>
