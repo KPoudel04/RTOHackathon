@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 
-const petItem = (props) => {
+const petItem = ({pet}) => {
   return (
     <Card>
-      <span>hello</span>
+      <span>{pet.name}</span>
     </Card>
   );
 };
