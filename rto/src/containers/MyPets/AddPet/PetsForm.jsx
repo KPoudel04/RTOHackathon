@@ -3,7 +3,7 @@ import React, {useState, useContext} from "react";
 import "./PetsForm.css";
 import { Image } from "react-bootstrap";
 
-import logo from "../pets.png";
+import logo from "./pets.png";
 
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import Card from '../../../components/Card/Card';
