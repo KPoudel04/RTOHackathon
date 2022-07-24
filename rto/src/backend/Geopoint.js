@@ -4,7 +4,7 @@ export class Geopoint {
     this.longitude = longitude;
   }
 
-  async asAddress() {
-    // use API to convert
-  }
+  // async asAddress() {
+  //   // use API to convert
+  // }
 }
