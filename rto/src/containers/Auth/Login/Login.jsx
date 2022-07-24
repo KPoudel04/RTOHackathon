@@ -5,8 +5,9 @@ import Input from "../../../components/Input/Input";
 import Wrapper from "../../../components/Wrapper/Wrapper";
 import { Link, Redirect, useNavigate } from "react-router-dom";
 import "./Login.css";
-
 import { signInUser } from '../../../backend/Firebase';
+
+
 
 const Login = ({ error, loading, login, clearErrors, history }) => {
   const [formData, setformData] = useState({
@@ -15,7 +16,6 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
   });
   const { email, password } = formData;
   let navigate = useNavigate();
-  let signedIn = false;
   const handleFormChange = (e) => {
     setformData({
       ...formData,
@@ -34,19 +34,11 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
       console.log(`Sign in error: ${result.status}`)
     } else {
       // user successfully signed in
-      signedIn = true;
       console.log("successfully signed in");
       navigate("/profile");
     }
     // TODO: display status message to UI
   };
-  useEffect(() => {
-    if (signedIn) {
-      history.push("/");
-      this.props.history.push('/profile');
-    }
-
-  }, [signedIn]);
 
   return (
     <Wrapper class="login-body card">

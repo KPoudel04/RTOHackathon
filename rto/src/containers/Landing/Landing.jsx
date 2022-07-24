@@ -1,22 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Landing.css";
-import landingPic from "./landing.jpg";
-
 const Landing = () => {
+  let navigate = useNavigate();
+  let destination = "/login";
   return (
     <div className="wrapper">
-      {/* <img src={landingPic} class="img-fluid" alt="logo"></img>
-      <div className="texts">
-        <div className="title"> Pawfect Finder</div>
-        <Link to="/login" className="link">
-          Find your lost pet{" "}
-        </Link>
-      </div> */}
       <div className="texts">
         <div className="title"> Pawfect Finder</div>
         <div className="subtitle"> Make your pet safe and happy</div>
-        <Link to="/login" className="link">
+        <Link to={"/profile"} className="link">
           Start Now →
         </Link>
       </div>
