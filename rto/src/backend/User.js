@@ -13,7 +13,7 @@ export class User {
    * @param {string} phone1 - optional, user's primary phone number
    * @param {string} phone2 - optional, user's secondary phone number
    */
-  constructor(uid, name, email, homeAddress, phone1, phone2) {
+  constructor(uid, name, email, homeAddress, phone1, phone2, homeCoordinates) {
     this.uid = uid;
     this.name = name;
     this.email = email;
@@ -24,6 +24,8 @@ export class User {
       this.phone1 = phone1;
     if (phone2)
       this.phone2 = phone2;
+    if (homeCoordinates)
+      this.homeCoordinates = homeCoordinates
   }
 
   /**
@@ -118,7 +120,7 @@ const userConverter = {
       homeAddress = new Address(streetAddress, locality, state, country, postalCode);
     }
 
-    return new User(snapshot.id, data.name, data.email, homeAddress, data.phone1, data.phone2)
+    return new User(snapshot.id, data.name, data.email, homeAddress, data.phone1, data.phone2, data.homeCoordinates)
   },
 }
 
