@@ -11,15 +11,15 @@ import Signup from "./containers/Auth/Signup/Signup";
 import Map from "./containers/Map/Map";
 import Profile from "./containers/Profile/Profile";
 import UserContext from "./components/UserContext";
-import MyPets from "./containers/MyPets/AddPet/PetsForm";
-import PetsList from "./containers/MyPets/PetsList/PetsList";
+import MyPets from "./containers/MyPets/MyPets";
+import { getUserDataRef } from './backend/User';
 
 function App() {
   // the currently authenticated user, if there is one
   const [authUser, authLoading, authError] = useAuthState(auth);
   // when the logged in user changes, retrieve user doc and set it
   const [user, userLoading, userError] = useDocumentData(
-    authUser ? doc(db, "users", authUser.uid) : undefined
+    authUser ? getUserDataRef(authUser.uid) : undefined
   );
 
   return (
@@ -39,7 +39,7 @@ function App() {
         />
         <Route
           path="/my-pets"
-          element={user ? <PetsList /> : <Navigate to="/login" replace />}
+          element={user ? <MyPets /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </UserContext.Provider>
