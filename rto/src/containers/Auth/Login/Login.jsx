@@ -6,7 +6,7 @@ import Wrapper from "../../../components/Wrapper/Wrapper";
 import { Link, Redirect, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-import { signInUser } from '../../../backend/Firebase';
+import { signInUser } from "../../../backend/Firebase";
 
 const Login = ({ error, loading, login, clearErrors, history }) => {
   const [formData, setformData] = useState({
@@ -16,6 +16,7 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
   const { email, password } = formData;
   let navigate = useNavigate();
   let signedIn = false;
+
   const handleFormChange = (e) => {
     setformData({
       ...formData,
@@ -31,7 +32,7 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
     if (!result) {
       console.log("Failed to sign in, unknown error");
     } else if (!result.val) {
-      console.log(`Sign in error: ${result.status}`)
+      console.log(`Sign in error: ${result.status}`);
     } else {
       // user successfully signed in
       signedIn = true;
@@ -43,9 +44,8 @@ const Login = ({ error, loading, login, clearErrors, history }) => {
   useEffect(() => {
     if (signedIn) {
       history.push("/");
-      this.props.history.push('/profile');
+      this.props.history.push("/profile");
     }
-
   }, [signedIn]);
 
   return (
