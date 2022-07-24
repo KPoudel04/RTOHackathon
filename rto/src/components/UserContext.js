@@ -1,8 +1,9 @@
 import React from 'react'
+import { User } from '../backend/User'
 
 // User context, used to make current user accessible from anywhere.
 // null should be used if the user is not logged in
-const UserContext = React.createContext(null)
+const UserContext = React.createContext(new User())
 
 export default UserContext
 

@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getFirestore, getDoc, doc } from "firebase/firestore";
-import { connectStorageEmulator, getStorage } from "firebase/storage";
-import { User } from './User';
+import { getFirestore, getDoc } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getUserDataRef, User, } from './User';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -99,7 +99,7 @@ export async function signInUser(email, password) {
     .then((userCredential) => {
       // Signed in with auth
       const userId = userCredential.user.uid;
-      return getDoc(doc(db, "users", userId));  // get snapshot of user data from firestore
+      return getDoc(getUserDataRef(userId));  // get snapshot of user data from firestore
     })
     .then((docSnap) => {
       if (docSnap.exists()) {

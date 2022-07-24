@@ -1,5 +1,7 @@
-import { doc, setDoc, collection, query, where } from "firebase/firestore"; 
+import { doc, setDoc, collection, query, where, updateDoc } from "firebase/firestore"; 
 import { db } from './Firebase';
+import { petConverter } from './Pet';
+import { Address } from './Address';
 
 export class User {
   /**
@@ -33,32 +35,74 @@ export class User {
   async persist() {
     try {
       const userToPersist = {...this};
-      delete userToPersist.uid;
+      // delete userToPersist.uid;
 
-      await setDoc(doc(db, "users", this.uid), userToPersist);
+      await setDoc(getUserDataRef(this.uid), userToPersist);
       console.log("Document written with ID: ", this.uid, "; name: ", this.name);
       return {
         val: this
-      }
+      };
     } catch (e) {
       console.error("Error adding document: ", e);
       return {
         val: null,
         status: "Not a valid document"
-      }
+      };
     }
   }
 
+  
   /** Returns a query that is used to get a user's pets.
    * Use Firestore's "onSnapshot" function to retrieve real-time data.
    * https://firebase.google.com/docs/firestore/query-data/listen?hl=en&authuser=0#listen_to_multiple_documents_in_a_collection
    */
   get petsQuery() {
     // query firestore for pets who are owned by this user
-    return query(collection(db, "pets"), where("ownerId", "==", this.uid))
+    return query(collection(db, "pets"), where("ownerId", "==", this.uid)).withConverter(petConverter);
   }
 
-  updateUser(name, address, phone1, phone2) {
-    // TODO
+  /**
+   * Updates a user, persisting changes to firestore
+   * @param {User} param0 - the updated user object. ignores uid and email fields
+   * @returns {Promise<Result<boolean>>} a result containing true if operation succeeded
+   */
+  async update({name, homeAddress, phone1 = "", phone2 = ""}) {
+    console.log("updating user ", name);
+    try {
+      await updateDoc(getUserDataRef(this.uid), {...{name, homeAddress, phone1, phone2}})
+      return {
+        val: true
+      };
+    } catch (e) {
+      return {
+        val: false,
+        status: `Update failed. User with id ${this.uid} might not exist in firestore. ${e}`
+      };
+    }
   }
+}
+
+
+// Firestore data converter for User
+const userConverter = {
+  toFirestore(user) {
+    const userToPersist = user;
+    delete userToPersist.uid;
+    return userToPersist;
+  },
+  fromFirestore(snapshot, options) {
+    const data = snapshot.data(options)
+    // these lines necessary to ensure homeAddress is created properly. otherwise, funcs be missing
+    let homeAddress;
+    if (data.homeAddress) {
+      const {streetAddress, locality, state, country, postalCode} = data.homeAddress;
+      homeAddress = new Address(streetAddress, locality, state, country, postalCode);
+    }
+
+    return new User(snapshot.id, data.name, data.email, homeAddress, data.phone1, data.phone2)
+  },
+}
+
+export function getUserDataRef(userId) {
+  return doc(db, 'users', userId).withConverter(userConverter)
 }
