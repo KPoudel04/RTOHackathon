@@ -10,7 +10,7 @@ const Landing = () => {
         <div className="title"> Pawfect Finder</div>
         <div className="subtitle"> Make your pet safe and happy</div>
         <Link to={"/profile"} className="link">
-          Start Now →
+          Start Now →git push
         </Link>
       </div>
     </div>
