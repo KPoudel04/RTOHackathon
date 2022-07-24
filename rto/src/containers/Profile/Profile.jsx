@@ -5,6 +5,7 @@ import logo from "../Profile/logo192.png";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import UserContext from '../../components/UserContext';
 import Card from '../../components/Card/Card';
+import { addressToGeopoint } from '../../backend/Geoapify';
 
 export default function Profile() {
   const user = useContext(UserContext)
@@ -39,6 +40,8 @@ export default function Profile() {
     async function handleFormSubmit(e) {
       e.preventDefault();
       console.log("submit pressed");
+      console.log(formData.homeAddress)
+      formData.homeCoordinates = await addressToGeopoint(formData.homeAddress)
 
       const result = await user.update(formData);
       console.log({ result });
@@ -130,7 +133,7 @@ export default function Profile() {
                     id="phone"
                     class="border-dark form-control"
                     type="tel"
-                    placeholder={phone1 ?? "Phone"}
+                    placeholder={phone2 ?? "Phone"}
                     name="phone2"
                     text={phone2}
                     onChange={handleFormChange}

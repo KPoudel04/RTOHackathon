@@ -1,4 +1,4 @@
-import { doc, setDoc, collection, query, where, updateDoc } from "firebase/firestore"; 
+import { doc, setDoc, collection, query, where, updateDoc, GeoPoint } from "firebase/firestore"; 
 import { db } from './Firebase';
 import { petConverter } from './Pet';
 import { Address } from './Address';
@@ -19,7 +19,6 @@ export class User {
     this.email = email;
     if (homeAddress) {
       this.homeAddress = homeAddress;
-      this.homeCoordinates = homeAddress.asGeopoint()
     }
     if (phone1)
       this.phone1 = phone1;
@@ -51,6 +50,21 @@ export class User {
     }
   }
 
+  async addCoordinates() {
+    const coords = await this.homeAddress?.asGeopoint() ?? null
+    if (coords) {
+      this.homeCoordinates = coords;
+      return {
+        val: this
+      }
+    } else {
+      return {
+        val: null,
+        status: "Error converting coordinates"
+      }
+    }
+  }
+
   
   /** Returns a query that is used to get a user's pets.
    * Use Firestore's "onSnapshot" function to retrieve real-time data.
@@ -66,10 +80,15 @@ export class User {
    * @param {User} param0 - the updated user object. ignores uid and email fields
    * @returns {Promise<Result<boolean>>} a result containing true if operation succeeded
    */
-  async update({name, homeAddress, phone1 = "", phone2 = ""}) {
+  async update({name, homeAddress, homeCoordinates, phone1 = "", phone2 = ""}) {
     console.log("updating user ", name);
+    console.log({name, homeAddress, homeCoordinates, phone1, phone2})
+    if (homeCoordinates) {
+      console.log("converting to firebase")
+      homeCoordinates = new GeoPoint(homeCoordinates.latitude, homeCoordinates.longitude)
+    }
     try {
-      await updateDoc(getUserDataRef(this.uid), {...{name, homeAddress, phone1, phone2}})
+      await updateDoc(getUserDataRef(this.uid), {...{name, homeAddress, homeCoordinates, phone1, phone2}})
       return {
         val: true
       };
