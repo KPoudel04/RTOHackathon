@@ -1,4 +1,4 @@
-class Address {
+export class Address {
   constructor(streetAddress, locality, state, country, postalCode) {
     this.streetAddress = streetAddress;
     this.locality = locality;

@@ -1,5 +1,6 @@
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp, getDoc } from "firebase/firestore";
 import { db } from './Firebase';
+import { getUserDataRef } from './User';
 
 
 export class Pet {
@@ -17,8 +18,9 @@ export class Pet {
    * @param {string} other - optional, any other attributes of the pet
    * @param {Geopoint} location - optional, pet's most recent location in
    * latitude longitude coordinates
+   * @param {string} status - either "lost", "found", or "normal"
    */
-  constructor(owner, name, sex, species, weight, height, color, breed, allergies, other, location) {
+  constructor(owner, name, sex, species, weight, height, color, breed, allergies, other, location, status = "normal") {
     this.owner = owner
     this.name = name;
     this.sex = sex;
@@ -34,7 +36,8 @@ export class Pet {
       this.other = other;
     if (location) 
       this.location = location;
-    
+    this.status = status;
+
     this.lastModified = Timestamp.now();
   }
 
@@ -65,4 +68,19 @@ export class Pet {
   uploadPicture() {
     // TODO: implement later
   }
+}
+
+// Firestore data converter for Pets
+export const petConverter = {
+  toFirestore(pet) {
+    return pet;
+  },
+  fromFirestore(snapshot, options) {
+    const data = snapshot.data(options)
+    // fetch owner (todo: change to be more efficient to avoid repeated reads)
+    const owner = getDoc(getUserDataRef(data.ownerId))
+    return new Pet(owner, data.name, data.sex, data.species,
+      data.weight, data.height, data.color, data.breed, data.allergies,
+      data.other, data.location, data.status, data.lastModified)
+  },
 }
